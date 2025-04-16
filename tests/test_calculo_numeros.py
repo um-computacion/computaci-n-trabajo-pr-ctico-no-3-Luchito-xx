@@ -49,6 +49,24 @@ class TestCalculoNumeros(unittest.TestCase):
         with self.assertRaises(NumeroDebeSerPositivo):
             ingrese_numero()
 
+    #Casos de ingresos no numericos
+
+    @patch('builtins.input', return_value='A')
+    def test_ingreso_letras(self, patch_input):
+        with self.assertRaises(ValueError):
+            ingrese_numero()
+
+
+    @patch('builtins.input', return_value='?')
+    def test_ingreso_letras(self, patch_input):
+        with self.assertRaises(ValueError):
+            ingrese_numero()
+
+
+    @patch('builtins.input', return_value='+')
+    def test_ingreso_letras(self, patch_input):
+        with self.assertRaises(ValueError):
+            ingrese_numero()
 
 
 if __name__ == '__main__':
